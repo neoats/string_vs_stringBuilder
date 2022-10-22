@@ -10,7 +10,7 @@ namespace string_vs_stringBuilder
 
 
             #region strvsstrbuilder
-            /*MyClass m1 = new();
+            MyClass m1 = new();
 
             Stopwatch sw = Stopwatch.StartNew();
 
@@ -33,32 +33,32 @@ namespace string_vs_stringBuilder
             }
             sw.Stop();
             Console.WriteLine($"Total Ms for StringBuilder:{sbMsS}\t");
-            Console.WriteLine($"Total Ms for String:{sw.ElapsedMilliseconds}\t");*/
+            Console.WriteLine($"Total Ms for String:{sw.ElapsedMilliseconds}\t");
 
 
             #endregion
 
             #region stringbuilder
+            /*
+                        Stopwatch sw = Stopwatch.StartNew();
+                        int counter = 100000;
+                        StringBuilder sb = new();
+                        for (int i = 0; i < counter; i++)
+                        {
+                            sb.Append(i).Append(" ");
 
-            Stopwatch sw = Stopwatch.StartNew();
-            int counter = 100000;
-            StringBuilder sb = new();
-            for (int i = 0; i < counter; i++)
-            {
-                sb.Append(i).Append(" ");
-                
-            }
-            sw.Stop();
-           
-            Console.WriteLine($"Total Ms Sb : {sw.ElapsedMilliseconds}");
+                        }
+                        sw.Stop();
 
+                        Console.WriteLine($"Total Ms Sb : {sw.ElapsedMilliseconds}");
+            */
             #endregion
 
         }
 
-       /* class MyClass
+        class MyClass
         {
             public int counter { get; set; } = 100000;
-        }*/
+        }
     }
 }
