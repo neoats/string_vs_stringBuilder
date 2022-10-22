@@ -37,12 +37,28 @@ namespace string_vs_stringBuilder
 
 
             #endregion
-          
+
+            #region stringbuilder
+
+            Stopwatch sw = Stopwatch.StartNew();
+            int counter = 100000;
+            StringBuilder sb = new();
+            for (int i = 0; i < counter; i++)
+            {
+                sb.Append(i).Append(" ");
+                
+            }
+            sw.Stop();
+           
+            Console.WriteLine($"Total Ms Sb : {sw.ElapsedMilliseconds}");
+
+            #endregion
+
         }
 
-        class MyClass
+       /* class MyClass
         {
             public int counter { get; set; } = 100000;
-        }
+        }*/
     }
 }
