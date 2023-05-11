@@ -1,5 +1,7 @@
-﻿using System.Diagnostics;
-using System.Text;
+﻿using string_vs_stringBuilder.stringService.Concrete;
+using System.Diagnostics;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Running;
 
 namespace string_vs_stringBuilder
 {
@@ -7,58 +9,22 @@ namespace string_vs_stringBuilder
     {
         static void Main(string[] args)
         {
-
-
-            #region strvsstrbuilder
-            MyClass m1 = new();
-
+  
+             var summary = BenchmarkRunner.Run<StringCreatorBenchmark>();
             Stopwatch sw = Stopwatch.StartNew();
+            new StringCreator().CreateString(2500);
+            var elapsedString = sw.ElapsedMilliseconds / 1000.0;
 
-
-            int counter = 100000;
-            string test = "";
-            for (int i = 0; i < m1.counter; i++)
-            {
-                test += i;
-
-            }
-            Console.WriteLine(test + "\t");
             sw.Stop();
-            long sbMsS = sw.ElapsedMilliseconds;
             sw.Restart();
-            StringBuilder sb = new();
-            for (int i = 0; i < m1.counter; i++)
-            {
-                sb.Append(i);
-            }
+            new sBuilderCreator().CreateString(2500);
+            var elapsedSbuilder = sw.ElapsedMilliseconds / 1000.0;
             sw.Stop();
-            Console.WriteLine($"Total Ms for StringBuilder:{sbMsS}\t");
-            Console.WriteLine($"Total Ms for String:{sw.ElapsedMilliseconds}\t");
-
-
-            #endregion
-
-            #region stringbuilder
-            /*
-                        Stopwatch sw = Stopwatch.StartNew();
-                        int counter = 100000;
-                        StringBuilder sb = new();
-                        for (int i = 0; i < counter; i++)
-                        {
-                            sb.Append(i).Append(" ");
-
-                        }
-                        sw.Stop();
-
-                        Console.WriteLine($"Total Ms Sb : {sw.ElapsedMilliseconds}");
-            */
-            #endregion
-
+            Console.WriteLine($"Total Seconds for String: {elapsedString:F2}\n");
+            Console.WriteLine($"Total Seconds for StringBuilder: {elapsedSbuilder:F2}");
         }
 
-        class MyClass
-        {
-            public int counter { get; set; } = 100000;
-        }
+      
+
     }
 }

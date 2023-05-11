@@ -1,1 +1,1 @@
-# string_vs_stringBuilder
+In this project, we aim to conduct a benchmark test to compare the performance of the String and StringBuilder classes in terms of character creation. 
